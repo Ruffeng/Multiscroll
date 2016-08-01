@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import jQuery from 'jquery';
 import Multiscroll from './components/multiscroll';
+import MultiGroup from './components/multigroup';
 
 
 let data=[
@@ -14,7 +15,15 @@ let data=[
 
 jQuery(function() {
   ReactDOM.render(
-    <Multiscroll data={data}/>,
+    <div>
+	    <Multiscroll data={data}>
+	    	data data data
+	    </Multiscroll>
+	    <Multiscroll data={data}>
+	    	data data data
+	    </Multiscroll>
+	</div>
+    ,
     document.getElementById('app')   
   );
 })
