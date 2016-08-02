@@ -15,12 +15,12 @@ let data=[
 jQuery(function() {
   ReactDOM.render(
 	       <MultiGroup >
-          <div> 
+          <div className="one"> 
             this is a child
             another
             and another
           </div>
-          <div>
+          <div className="two">
           can it be another???
           </div>
          </MultiGroup>

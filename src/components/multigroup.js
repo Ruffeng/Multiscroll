@@ -1,21 +1,25 @@
 import React from 'react';
 
 export default class MultiGroup extends React.Component {
+  _getNumberOfPages(){
+    return (React.Children.count(this.props.children));
+  }
+  _getChild(){
+       return(
+          React.Children.map(this.props.children, (child,i) => {
+            return ( child );
+            })
+        );
 
+  }
   render(){
-    console.log(this.props.children[0]._shadowChildren);  
+    const child = this._getChild();
+    const numOfPages = this._getNumberOfPages();
     return(
-    <div> 
-      <p>total : {React.Children.count(this.props.children)} </p>
-      {
-        React.Children.forEach(this.props.children, (child,index) => {
-              return (<div> hola que tal </div>);
-        });
-
-      }
-      <p> {this.props.children[0].props.children}  </p>
-    </div>  
-
+     <div>
+      The number of child are: {numOfPages}
+     {child}
+     </div>
     );
   }
 }
