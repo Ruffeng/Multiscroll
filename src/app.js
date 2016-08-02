@@ -12,17 +12,22 @@ let data=[
 ]
 
 
-
 jQuery(function() {
   ReactDOM.render(
-    <div>
-	    <Multiscroll data={data}>
-	    	data data data
-	    </Multiscroll>
-	    <Multiscroll data={data}>
-	    	data data data
-	    </Multiscroll>
-	</div>
+	       <MultiGroup >
+          <div> 
+            this is a child
+            another
+            and another
+          </div>
+          <div>
+          can it be another???
+          </div>
+         </MultiGroup>
+        /*<Multiscroll data={data}>
+  	    	data data data
+  	    </Multiscroll>*/
+      
     ,
     document.getElementById('app')   
   );

@@ -1,10 +1,10 @@
 import React from 'react';
 import Menu from './menu';
 
-export default class multiscroll extends React.Component {
+export default class MultiScroll extends React.Component {
     constructor(props){
         super(props);
-        this.state={step:1, count:this.props.data.length, estat:0};
+        this.state={step:1, count:this.props.data.length};
         this.onWheel=this.onWheel.bind(this);
       	this.selectStep=this.selectStep.bind(this);
         this.renderList=this.renderList.bind(this);
@@ -12,10 +12,6 @@ export default class multiscroll extends React.Component {
       	this.allow=true;
       	this.timer=700;
       	this.animTime=5.7;
-    }
-    componentWillMount(){
-        let estat = this.state.estat+1
-        this.setState({estat});
     }
 
     onWheel(e){
@@ -47,7 +43,6 @@ export default class multiscroll extends React.Component {
         let {step}= this.state;
         let transition= `all ${this.animTime}s`;
         let reversedata=data.slice().reverse();
-        console.log(this.state.estat);
         return (
             <div onWheel={this.onWheel} className="slider">
                 <div className="left" style={{top:`-${this.h*(step-1)}px`,transition}}>
