@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 
 export default class StepBtn extends React.Component {
    constructor(props){
@@ -16,3 +16,4 @@ export default class StepBtn extends React.Component {
 		);
 	}
 }
+*/
