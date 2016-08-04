@@ -2,7 +2,12 @@ import React from 'react';
 //import Menu from './menu';
 
 export default class MultiScroll extends React.Component {
-    
+    constructor(props){
+        super(props);
+        this.state={key: this.props.npage};
+        this.height=document.documentElement.clientHeight;
+
+    }
     renderList(list){
     //    return list.map((e,i)=> <div className="img"
      //           style={{ backgroundImage:`url(${e.img})`, height:`${this.h}px` }}
@@ -11,15 +16,26 @@ export default class MultiScroll extends React.Component {
 
 	
     render(){
-     //   const data = this.props.content
-     //   const reverseData = data.slice().reverse();
-     //   const nPage = this.props.npage;
-     //  const transition= `all ${this.props.animation}s`;
-       // console.log("data: "+data+". Reverse: "+reverseData)+"NPage: "+nPage+"Transition: "+transition);
+        let data=[
+  {img:"http://www.planwallpaper.com/static/images/4-Nature-Wallpapers-2014-1_ukaavUI.jpg"},
+  {img:"http://www.wallpapereast.com/static/images/spring-in-nature-wide-wallpaper-603794.jpg"},
+  {img:"http://www.hdwallpapers.in/download/fresh_nature-1280x720.jpg"}
+]
+         const {content}= this.props;
+        // const {key} = this.props.content;
+         const {nPage}= this.props;
+         const transition= `all ${this.props.animation}s`;
+         console.log("data: "+ content +"NPage: "+nPage+"Transition: "+transition);
+
         return(
-            <div> dins 
-            </div>
-                
+        <div className="wrapper">
+        <div className="left" style={{top:`-${this.height*nPage}px`,transition}} >
+            {content}
+        </div>
+        <div className="right" style={{bottom:`-${this.height*nPage}px`,transition}} >
+            {content}
+        </div>
+             </div>   
             	
 		);
 	}
