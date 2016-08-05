@@ -1,4 +1,3 @@
-// ERROR LINE 44
 import React from 'react';
 import MultiScroll from './multiscroll'
 
@@ -12,8 +11,10 @@ export default class MultiGroup extends React.Component {
     this.scrollAllow=true;
     this.allowTimer=700;
     this.animTime=5.0;
-    this.web={};
-    this._getChild();
+    this.webLeft=[];
+    this.webRight=[];
+    this._defineContent();
+      
   }
   
   
@@ -21,36 +22,27 @@ export default class MultiGroup extends React.Component {
     return this.state.count;
 
   }
-  _getChild(){
+  _defineContent(){
        React.Children.map(this.props.children, (child,key) => {
-          this._getSection(child,key);
+          this._setSidePage(child,key);
        })
-       
-       console.log(this.web);
-       /*return(
-          React.Children.map(this.props.children, (child,index) => {
-            return ( 
-              <MultiScroll nPage={index} content={child}  animation={this.animTime}/> 
-            );
-          })
-        );*/
   }
-  _getSection(child,key){
-     
+  _setSidePage(child,key){
       if (child.type == "multiScroll"){
-            let content = {};
             React.Children.map(child.props.children, (section) => {
                 switch(section.type){
-                  case "leftSide"  : this.web["left"][key]={page: key, content: section};
-                  case "rightSide" : this.web.right={page: key, content: section};
+                  case "leftSide" : 
+                    this.webLeft.push({page: key, content: section.props.children}); 
+                    break; 
+                  case "rightSide" : 
+                    this.webRight.push({page: key, content: section.props.children}); 
+                    break; 
                 }              
-            })
-            
-      }
-      
+            })      
+      } 
   }
   
-  onWheel(e){   // To know in which page are we and were are we going. Also it forbids to do a mousewheel if it's doing his job 
+  onWheel(e){   
     if( !this.scrollAllow){
       e.preventDefault();
     }  
@@ -63,32 +55,47 @@ export default class MultiGroup extends React.Component {
       }
     }    
   }
-
-
-
   selectPage(nPage){
       this.setState({nPage})
   }
-  render(){
-    //const content = this._getChild();
-    //const revChild =child.slice().reverse();
-    let nPage = this.state.nPage;
-    const numOfPages = this._getNumberOfPages();
-    const transition= `all ${this.animTime}s`;
 
-    return(
-      <div onWheel={this.onWheel}  className="slider">
-       
-      </div>
+// RUSSIAN
+  renderList(list){                     
+          return(
+            list.map((content,i)=>{
+              return(
+                <div className="img"    
+                style={{ height:`${this.height}px` }}
+                key={i}>{content.content}</div>
+              )
+            })
+          );
+
+
+          //return 
+          //  list.map((e,i)=> <div className="img"    
+          //        style={{ height:`${this.height}px` }}
+          //        key={i}>as</div>)
+      }
+
+
+  render(){
+    let contRight=this.webRight.slice().reverse();
+    let contLeft=this.webLeft;
+    let {nPage}= this.state; // Agafes el pas en que sta actualment 
+    let transition= `all ${this.animTime}s`;// Fa all i el numero que haguem posat a animTime. EX: all 0.7
+    return (
+        <div onWheel={this.onWheel} className="slider">
+            <div className="left" style={{top:`-${this.height*(nPage-1)}px`,transition}}>
+                {this.renderList(contLeft)}
+            </div>
+            <div className="right" style={{bottom:`-${this.height*(nPage-1)}px`,transition}}>
+                {this.renderList(contRight)}
+            </div>
+            
+        </div>
     );
   }
 }
 
 
-/*<div className="1 left" style={{height: this.height, top:`-${this.height*(nPage-1)}px`,transition}} >
-        The number of child are {numOfPages}
-        </div>
-        <div className="2 right" style={{height: this.height, bottom:`-${this.height*(nPage-1)}px`,transition}} >
-        The number of child AGAIN are {numOfPages}
-        </div>
-*/
