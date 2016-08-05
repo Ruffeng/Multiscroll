@@ -1,3 +1,4 @@
+// ERROR LINE 44
 import React from 'react';
 import MultiScroll from './multiscroll'
 
@@ -11,23 +12,45 @@ export default class MultiGroup extends React.Component {
     this.scrollAllow=true;
     this.allowTimer=700;
     this.animTime=5.0;
+    this.web={};
+    this._getChild();
   }
+  
   
   _getNumberOfPages(){
     return this.state.count;
 
   }
   _getChild(){
-       return(
+       React.Children.map(this.props.children, (child,key) => {
+          this._getSection(child,key);
+       })
+       
+       console.log(this.web);
+       /*return(
           React.Children.map(this.props.children, (child,index) => {
             return ( 
               <MultiScroll nPage={index} content={child}  animation={this.animTime}/> 
             );
           })
-        );
+        );*/
   }
+  _getSection(child,key){
+     
+      if (child.type == "multiScroll"){
+            let content = {};
+            React.Children.map(child.props.children, (section) => {
+                switch(section.type){
+                  case "leftSide"  : this.web["left"][key]={page: key, content: section};
+                  case "rightSide" : this.web.right={page: key, content: section};
+                }              
+            })
+            
+      }
+      
+  }
+  
   onWheel(e){   // To know in which page are we and were are we going. Also it forbids to do a mousewheel if it's doing his job 
-    alert("scrolled");
     if( !this.scrollAllow){
       e.preventDefault();
     }  
@@ -47,7 +70,7 @@ export default class MultiGroup extends React.Component {
       this.setState({nPage})
   }
   render(){
-    const content = this._getChild();
+    //const content = this._getChild();
     //const revChild =child.slice().reverse();
     let nPage = this.state.nPage;
     const numOfPages = this._getNumberOfPages();
@@ -55,7 +78,7 @@ export default class MultiGroup extends React.Component {
 
     return(
       <div onWheel={this.onWheel}  className="slider">
-       {content}
+       
       </div>
     );
   }

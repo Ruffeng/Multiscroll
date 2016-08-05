@@ -16,11 +16,7 @@ export default class MultiScroll extends React.Component {
 
 	
     render(){
-        let data=[
-  {img:"http://www.planwallpaper.com/static/images/4-Nature-Wallpapers-2014-1_ukaavUI.jpg"},
-  {img:"http://www.wallpapereast.com/static/images/spring-in-nature-wide-wallpaper-603794.jpg"},
-  {img:"http://www.hdwallpapers.in/download/fresh_nature-1280x720.jpg"}
-]
+
          const {content}= this.props;
         // const {key} = this.props.content;
          const {nPage}= this.props;
@@ -28,14 +24,14 @@ export default class MultiScroll extends React.Component {
          console.log("data: "+ content +"NPage: "+nPage+"Transition: "+transition);
 
         return(
-        <div className="wrapper">
-        <div className="left" style={{top:`-${this.height*nPage}px`,transition}} >
-            {content}
-        </div>
-        <div className="right" style={{bottom:`-${this.height*nPage}px`,transition}} >
-            {content}
-        </div>
-             </div>   
+        <div className="wrapper" data-key={nPage} style={{height: this.height}}>
+            <div className="left" style={{top:`-${this.height*nPage}px`,transition}} >
+                {content}
+            </div>
+            <div className="right" style={{top:`-${this.height*nPage}px`,transition}} >
+                {content}
+            </div>
+        </div>   
             	
 		);
 	}

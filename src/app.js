@@ -14,22 +14,24 @@ import MultiGroup from './components/multigroup';
 
 jQuery(function() {
   ReactDOM.render(
-	       <MultiGroup >
-          <div className="one"> 
-            this is a child
-            another
-            and another
-          </div>
-          <div className="two">
-          can it be another???
-          </div>
-          <div className="three">
-            cmonnn a third div
-          </div>
-         </MultiGroup>
-        /*<Multiscroll data={data}>
-  	    	data data data
-  	    </Multiscroll>*/
+	     <MultiGroup >
+          <multiScroll>
+            <leftSide>
+              aaaaa
+            </leftSide>
+            <rightSide>
+              bbbbbb
+            </rightSide>
+          </multiScroll>
+          <multiScroll>
+            <leftSide>
+              ccccccc
+            </leftSide>
+            <rightSide>
+              dddddddd
+            </rightSide>
+          </multiScroll>
+       </MultiGroup>
       
     ,
     document.getElementById('app')   
