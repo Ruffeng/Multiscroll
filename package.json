@@ -17,8 +17,8 @@
     "babel",
     "gulp",
     "es2015"
-    "Multiscroll"
-    "Split Screen"
+    "multiscroll"
+    "splitscreen"
   ],
   "bugs": {
     "url": "git@github.com:Ruffeng/Multiscroll-plugin.git"
