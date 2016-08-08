@@ -1,5 +1,4 @@
 import React from 'react';
-// Intentar de posar dintre del state el height, aixi fara un render automatic
 export default class MultiGroup extends React.Component {
   constructor(props){
     super(props);
@@ -12,12 +11,9 @@ export default class MultiGroup extends React.Component {
     this.webRight=[];
     this._defineContent();
     this._handleResize = this._handleResize.bind(this);
-
-
   }
   componentDidMount() {
        window.addEventListener("resize", this._handleResize);
-
   }
   _handleResize(){
       this.setState({height: document.documentElement.clientHeight})
@@ -48,7 +44,6 @@ export default class MultiGroup extends React.Component {
     }
     else{
       const step = e.deltaY > 0 ? this.state.nPage+1 : this.state.nPage-1;
-      //console.log(step);
       if (this.scrollAllow && step >= 1 && step <= this.state.count){
         this.scrollAllow = false;
         setTimeout(()=>{this.scrollAllow=true},(this.animTime*1000));
@@ -71,10 +66,10 @@ export default class MultiGroup extends React.Component {
           );
       }
   render(){
-    let contRight=this.webRight.slice().reverse();
-    let contLeft=this.webLeft;
-    let {nPage}= this.state;
-    let transition= `all ${this.animTime}s`;
+    const contRight=this.webRight.slice().reverse();
+    const contLeft=this.webLeft;
+    const {nPage}= this.state;
+    const transition= `all ${this.animTime}s`;
     return (
         <div onWheel={this.onWheel} className="scroller">
             <div className="left" style={{top:`-${this.state.height*(nPage-1)}px`,transition}}>
@@ -84,13 +79,13 @@ export default class MultiGroup extends React.Component {
                 {this.renderList(contRight)}
             </div>
 
-            <div className="right-panel">
-                  <div className='btn-panel'>
+            <div className="dotstyle">
+                  <ul>
                     {contLeft.map((e,i)=><Menu key={i}
                     onPress={this.selectPage}
                     step={i+1}
                     selected={nPage==i+1}/>)}
-                  </div>
+                  </ul>
                 </div>
         </div>
     );
@@ -105,9 +100,9 @@ class Menu extends React.Component {
       this.props.onPress(this.props.step)
     }
     render(){
-      let {selected,step}= this.props;
-      let select =selected?'selected':'';
-      return <div onClick={this.onClick} className={`step-btn ${select}`}>{this.props.step}</div>;
+      const {selected}= this.props;
+      const select =selected?'current':'';
+      return <li className={`${select}`}><a href="#" onClick={this.onClick}> </a></li>;
       }
 }
 

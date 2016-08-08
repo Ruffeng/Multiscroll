@@ -40,9 +40,9 @@
   transition: all .7s;
 }
 
-/* Scroll Menu */
+/* DOTS Menu */
 
-.scroller .right-panel {
+.dotstyle{
   background-color: transparent;
   color: black;
   position: fixed;
@@ -53,33 +53,60 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+
 }
-.scroller .btn-panel .step-btn {
-  width: 50px;
-  height: 50px;
+.dotstyle ul {
+  background-color: transparent;
+}
+
+.dotstyle li {
+  position: relative;
+  display: block;
+  margin: 20px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  background-color: transparent;
+
+}
+
+.dotstyle li a {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border-radius: 50%;
+  background-color: #fff;
+  background-color: rgba(255,255,255,0.3);
+  cursor: pointer; /* make the text accessible to screen readers */
+  position: absolute;
+  -webkit-transition: background-color 0.7s ease;
+  transition: background-color 0.7s ease;
+}
+
+.dotstyle li a:hover,
+.dotstyle li a:focus,
+.dotstyle li.current a {
   background-color: #fff;
 }
-.scroller .btn-panel .step-btn.selected {
-  background-color: red;
-}
-.scroller .btn-panel .step-btn:hover {
-  background-color: blue;
-}
+
+
 
 /* CSS TO CENTER THE EXAMPLES */
 .left .page-1, .left .page-2{
-  text-align: right; 
+  text-align: right;
   padding-right: 10px;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-.right .page-1, .right .page-2{ 
+.right .page-1, .right .page-2{
   padding-left: 10px;
   display: flex;
   justify-content: center;
   flex-direction: column;
- 
+
 }
 .page-2{
   background-color: #45B8AC;
