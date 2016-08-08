@@ -3,24 +3,24 @@ import React from 'react';
 export default class MultiGroup extends React.Component {
   constructor(props){
     super(props);
-    this.state={nPage: 1, count: React.Children.count(this.props.children) };
+    this.state={nPage: 1, count: React.Children.count(this.props.children), height: document.documentElement.clientHeight };
     this.onWheel= this.onWheel.bind(this);
     this.selectPage=this.selectPage.bind(this);
-    this.height=document.documentElement.clientHeight;
     this.scrollAllow=true;
-    this.allowTimer=700;
-    this.animTime=5.0;
+    this.animTime=3.0;
     this.webLeft=[];
     this.webRight=[];
     this._defineContent();
+    this._handleResize = this._handleResize.bind(this);
+
+
   }
   componentDidMount() {
        window.addEventListener("resize", this._handleResize);
 
   }
   _handleResize(){
-     this.height=document.documentElement.clientHeight;
-      console.log(this.height);
+      this.setState({height: document.documentElement.clientHeight})
   }
   _defineContent(){
        React.Children.map(this.props.children, (child,key) => {
@@ -42,16 +42,16 @@ export default class MultiGroup extends React.Component {
       }
   }
   onWheel(e){
-    console.log("wheel");
+    console.log(this.scrollAllow)
     if( !this.scrollAllow){
       e.preventDefault();
     }
     else{
       const step = e.deltaY > 0 ? this.state.nPage+1 : this.state.nPage-1;
-      console.log(step);
+      //console.log(step);
       if (this.scrollAllow && step >= 1 && step <= this.state.count){
         this.scrollAllow = false;
-        setTimeout(()=>{this.scrollAllow=true},this.allowTimer);
+        setTimeout(()=>{this.scrollAllow=true},(this.animTime*1000));
         this.setState({nPage: step})
       }
     }
@@ -64,7 +64,7 @@ export default class MultiGroup extends React.Component {
             list.map((content)=>{
               return(
                 <div className={`page-${content.page+1}`}
-                style={{ height:`${this.height}px` }}
+                style={{ height:`${this.state.height}px` }}
                 key={content.page}>{content.content}</div>
               )
             })
@@ -77,10 +77,10 @@ export default class MultiGroup extends React.Component {
     let transition= `all ${this.animTime}s`;
     return (
         <div onWheel={this.onWheel} className="scroller">
-            <div className="left" style={{top:`-${this.height*(nPage-1)}px`,transition}}>
+            <div className="left" style={{top:`-${this.state.height*(nPage-1)}px`,transition}}>
                 {this.renderList(contLeft)}
             </div>
-            <div className="right" style={{bottom:`-${this.height*(nPage-1)}px`,transition}}>
+            <div className="right" style={{bottom:`-${this.state.height*(nPage-1)}px`,transition}}>
                 {this.renderList(contRight)}
             </div>
 
