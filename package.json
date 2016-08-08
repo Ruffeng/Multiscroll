@@ -16,8 +16,8 @@
   "keywords": [
     "babel",
     "gulp",
-    "es2015"
-    "multiscroll"
+    "es2015",
+    "multiscroll",
     "splitscreen"
   ],
   "bugs": {
