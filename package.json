@@ -1,5 +1,5 @@
 {
-  "name": "babel-with-gulp",
+  "name": "multiscroll-plugin",
   "version": "1.0.0",
   "description": "Starter code for using Babel with Gulp",
   "main": "index.js",
@@ -7,21 +7,23 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "gulp watch"
   },
-  "author": "Carlos Souza <carloshrsouza@gmail.com> (http://csouza.me/)",
+  "author": "Ruben Suet <rubensuet@gmail.com> ",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/codeschool/babel-with-gulp.git"
+    "url": "git+ssh://git@github.com:Ruffeng/Multiscroll-plugin.git"
   },
   "keywords": [
     "babel",
     "gulp",
     "es2015"
+    "Multiscroll"
+    "Split Screen"
   ],
   "bugs": {
-    "url": "https://github.com/codeschool/babel-with-gulp/issues"
+    "url": "git@github.com:Ruffeng/Multiscroll-plugin.git"
   },
-  "homepage": "https://github.com/codeschool/babel-with-gulp#readme",
+  "homepage": "https://github.com/ruffeng/Multiscroll-plugin/#readme",
   "devDependencies": {
     "babel-core": "^6.7.6",
     "babel-preset-es2015": "^6.1.18",
