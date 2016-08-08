@@ -1,47 +1,36 @@
-* {
-  font-size: 44px;
-}
 
-.slider {
+/* GENERAL */
+@import url(https://fonts.googleapis.com/css?family=Rubik:700);
+
+* {
+  font-family: 'Rubik', sans-serif;
+  font-size: 44px;
+  background-color: #6FB7E9;
+  text-shadow: 0.3px 0.3px #9896A4;
+}
+::selection {
+  background: #FAE03C; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #FAE03C; /* Gecko Browsers */
+}
+/* Scroll Positions */
+.scroller {
   height: 100%;
   width: 100%;
   top: 0;
   left: 0;
   position: fixed;
-  background-color: #555;
+  color: white;
 }
-.slider .right-panel {
-  position: fixed;
-  right: 0;
-  height: 600px;
-  z-index: 5;
-  text-align: center;
-  display: table-cell;
-  vertical-align: middle;
-}
-.slider .btn-panel .step-btn {
-  width: 50px;
-  height: 50px;
-  background-color: #fff;
-}
-.slider .btn-panel .step-btn.selected {
-  background-color: red;
-}
-.slider .btn-panel .step-btn:hover {
-  background-color: blue;
-}
-.slider .img {
-  background-position: center;
-  background-size: cover;
-}
-.slider .left {
+.scroller .left {
   top: 0;
   position: absolute;
   overflow: hidden;
   width: 50%;
   transition: all .7s;
 }
-.slider .right {
+.scroller .right {
   bottom: 0;
   position: absolute;
   overflow: hidden;
@@ -50,6 +39,48 @@
   z-index: 2;
   transition: all .7s;
 }
-/*.slider .right .img {
-  margin-left: -100%;
-}*/
+
+/* Scroll Menu */
+
+.scroller .right-panel {
+  background-color: transparent;
+  color: black;
+  position: fixed;
+  right: 0;
+  height: 100%;
+  z-index: 5;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.scroller .btn-panel .step-btn {
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+}
+.scroller .btn-panel .step-btn.selected {
+  background-color: red;
+}
+.scroller .btn-panel .step-btn:hover {
+  background-color: blue;
+}
+
+/* CSS TO CENTER THE EXAMPLES */
+.left .page-1, .left .page-2{
+  text-align: right; 
+  padding-right: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.right .page-1, .right .page-2{ 
+  padding-left: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+ 
+}
+.page-2{
+  background-color: #45B8AC;
+}

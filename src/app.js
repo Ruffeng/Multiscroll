@@ -17,18 +17,18 @@ jQuery(function() {
 	     <MultiGroup >
           <multiScroll>
             <leftSide>
-              aaaaa
+              DIV1
             </leftSide>
             <rightSide>
-              bbbbbb
+              DIV2
             </rightSide>
           </multiScroll>
           <multiScroll>
             <leftSide>
-              ccccccc
+              DIV3
             </leftSide>
             <rightSide>
-              dddddddd
+              DIV4
             </rightSide>
           </multiScroll>
        </MultiGroup>

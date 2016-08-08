@@ -1,6 +1,5 @@
 import React from 'react';
-import MultiScroll from './multiscroll'
-
+// Intentar de posar dintre del state el height, aixi fara un render automatic
 export default class MultiGroup extends React.Component {
   constructor(props){
     super(props);
@@ -14,13 +13,14 @@ export default class MultiGroup extends React.Component {
     this.webLeft=[];
     this.webRight=[];
     this._defineContent();
-      
   }
-  
-  
-  _getNumberOfPages(){
-    return this.state.count;
+  componentDidMount() {
+       window.addEventListener("resize", this._handleResize);
 
+  }
+  _handleResize(){
+     this.height=document.documentElement.clientHeight;
+      console.log(this.height);
   }
   _defineContent(){
        React.Children.map(this.props.children, (child,key) => {
@@ -31,71 +31,83 @@ export default class MultiGroup extends React.Component {
       if (child.type == "multiScroll"){
             React.Children.map(child.props.children, (section) => {
                 switch(section.type){
-                  case "leftSide" : 
-                    this.webLeft.push({page: key, content: section.props.children}); 
-                    break; 
-                  case "rightSide" : 
-                    this.webRight.push({page: key, content: section.props.children}); 
-                    break; 
-                }              
-            })      
-      } 
+                  case "leftSide" :
+                    this.webLeft.push({page: key, content: section.props.children});
+                    break;
+                  case "rightSide" :
+                    this.webRight.push({page: key, content: section.props.children});
+                    break;
+                }
+            })
+      }
   }
-  
-  onWheel(e){   
+  onWheel(e){
+    console.log("wheel");
     if( !this.scrollAllow){
       e.preventDefault();
-    }  
+    }
     else{
-      const step = e.deltaY > 0 ? this.state.nPage+1 : this.state.nPage-1;    
+      const step = e.deltaY > 0 ? this.state.nPage+1 : this.state.nPage-1;
+      console.log(step);
       if (this.scrollAllow && step >= 1 && step <= this.state.count){
         this.scrollAllow = false;
         setTimeout(()=>{this.scrollAllow=true},this.allowTimer);
         this.setState({nPage: step})
       }
-    }    
+    }
   }
   selectPage(nPage){
       this.setState({nPage})
   }
-
-// RUSSIAN
-  renderList(list){                     
+  renderList(list){
           return(
-            list.map((content,i)=>{
+            list.map((content)=>{
               return(
-                <div className="img"    
+                <div className={`page-${content.page+1}`}
                 style={{ height:`${this.height}px` }}
-                key={i}>{content.content}</div>
+                key={content.page}>{content.content}</div>
               )
             })
           );
-
-
-          //return 
-          //  list.map((e,i)=> <div className="img"    
-          //        style={{ height:`${this.height}px` }}
-          //        key={i}>as</div>)
       }
-
-
   render(){
     let contRight=this.webRight.slice().reverse();
     let contLeft=this.webLeft;
-    let {nPage}= this.state; // Agafes el pas en que sta actualment 
-    let transition= `all ${this.animTime}s`;// Fa all i el numero que haguem posat a animTime. EX: all 0.7
+    let {nPage}= this.state;
+    let transition= `all ${this.animTime}s`;
     return (
-        <div onWheel={this.onWheel} className="slider">
+        <div onWheel={this.onWheel} className="scroller">
             <div className="left" style={{top:`-${this.height*(nPage-1)}px`,transition}}>
                 {this.renderList(contLeft)}
             </div>
             <div className="right" style={{bottom:`-${this.height*(nPage-1)}px`,transition}}>
                 {this.renderList(contRight)}
             </div>
-            
+
+            <div className="right-panel">
+                  <div className='btn-panel'>
+                    {contLeft.map((e,i)=><Menu key={i}
+                    onPress={this.selectPage}
+                    step={i+1}
+                    selected={nPage==i+1}/>)}
+                  </div>
+                </div>
         </div>
     );
   }
 }
-
+class Menu extends React.Component {
+   constructor(props){
+      super(props);
+      this.onClick=this.onClick.bind(this);
+    }
+    onClick(){
+      this.props.onPress(this.props.step)
+    }
+    render(){
+      let {selected,step}= this.props;
+      let select =selected?'selected':'';
+      return <div onClick={this.onClick} className={`step-btn ${select}`}>{this.props.step}</div>;
+      }
+}
 
