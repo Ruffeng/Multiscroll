@@ -57,6 +57,16 @@ gulp.task('serve', ['transpile'], () => sync.init({
 
 gulp.task('js-watch', ['transpile'], () => sync.reload());
 
+// Heroku production server
+gulp.task('serveprod', function() {
+  connect.server({
+    root: process.env.IP || 'localhost',
+    port: process.env.PORT || 5000, // localhost:5000
+    livereload: false
+  });
+});
+// END OF PRODUCTION SERVER
+
 gulp.task('watch', ['serve'], () => {
   gulp.watch('src/**/*', ['js-watch'])
   gulp.watch('public/assets/style.css', sync.reload)
