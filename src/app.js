@@ -7,7 +7,7 @@ import MultiGroup from './components/multigroup';
 jQuery(function() {
   ReactDOM.render(
 	     <MultiGroup >
-          <multiScroll>
+          <multiScroll bgColor="#6FB7E9">
             <leftSide>
               DIV1
             </leftSide>
@@ -15,7 +15,7 @@ jQuery(function() {
               DIV2
             </rightSide>
           </multiScroll>
-          <multiScroll>
+          <multiScroll bgColor="#45B8AC">
             <leftSide>
               DIV3
             </leftSide>

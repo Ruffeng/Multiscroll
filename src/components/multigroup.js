@@ -11,6 +11,7 @@ export default class MultiGroup extends React.Component {
     this.webRight=[];
     this._defineContent();
     this._handleResize = this._handleResize.bind(this);
+    console.log(this.backgrounds);
   }
   componentDidMount() {
        window.addEventListener("resize", this._handleResize);
@@ -25,20 +26,21 @@ export default class MultiGroup extends React.Component {
   }
   _setSidePage(child,key){
       if (child.type == "multiScroll"){
+            let bgColor = child.props.bgColor|| "red";
             React.Children.map(child.props.children, (section) => {
                 switch(section.type){
                   case "leftSide" :
-                    this.webLeft.push({page: key, content: section.props.children});
+                    this.webLeft.push({page: key, content: section.props.children, bgColor });
                     break;
                   case "rightSide" :
-                    this.webRight.push({page: key, content: section.props.children});
+                    this.webRight.push({page: key, content: section.props.children, bgColor});
                     break;
                 }
             })
       }
   }
+
   onWheel(e){
-    console.log(this.scrollAllow)
     if( !this.scrollAllow){
       e.preventDefault();
     }
@@ -46,20 +48,21 @@ export default class MultiGroup extends React.Component {
       const step = e.deltaY > 0 ? this.state.nPage+1 : this.state.nPage-1;
       if (this.scrollAllow && step >= 1 && step <= this.state.count){
         this.scrollAllow = false;
+
         setTimeout(()=>{this.scrollAllow=true},(this.animTime*1000));
         this.setState({nPage: step})
       }
     }
   }
   selectPage(nPage){
-      this.setState({nPage})
+      this.setState({nPage});
   }
   renderList(list){
           return(
             list.map((content)=>{
               return(
-                <div className={`page-${content.page+1}`}
-                style={{ height:`${this.state.height}px` }}
+                <div className={`page page-${content.page+1}`}
+                style={{ height:`${this.state.height}px`, backgroundColor:content.bgColor }}
                 key={content.page}>{content.content}</div>
               )
             })
@@ -75,6 +78,7 @@ export default class MultiGroup extends React.Component {
             <div className="left" style={{top:`-${this.state.height*(nPage-1)}px`,transition}}>
                 {this.renderList(contLeft)}
             </div>
+            <div className="menu" />
             <div className="right" style={{bottom:`-${this.state.height*(nPage-1)}px`,transition}}>
                 {this.renderList(contRight)}
             </div>
