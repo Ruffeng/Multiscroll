@@ -4,13 +4,19 @@ export default class MultiGroup extends React.Component {
     super(props);
     this.state={nPage: 1, count: React.Children.count(this.props.children), height: document.documentElement.clientHeight };
     this.onWheel= this.onWheel.bind(this);
+    this.onTouch= this.onTouch.bind(this);
     this.selectPage=this.selectPage.bind(this);
+    this._handleResize = this._handleResize.bind(this);
+    this.onTouchStart = this.onTouchStart.bind(this);
+    this.onTouchEnd = this.onTouchEnd.bind(this);
+    this.onTouchMove = this.onTouchMove.bind(this);
     this.scrollAllow=true;
     this.animTime=3.0;
     this.webLeft=[];
     this.webRight=[];
+    this.initPosition=0;
+    this.lastPosition=0;
     this._defineContent();
-    this._handleResize = this._handleResize.bind(this);
     console.log(this.backgrounds);
   }
   componentDidMount() {
@@ -40,6 +46,23 @@ export default class MultiGroup extends React.Component {
       }
   }
 
+  onTouchStart(e){
+    this.initPosition = e.touches[0].screenY
+  }
+
+  onTouchMove(e){
+    this.lastPosition = e.touches[0].screenY;
+
+  }
+  onTouchEnd(d){
+    console.log("First position: "+this.initPosition+". Last position: "+this.lastPosition);
+  }
+
+  onTouch(e){
+    let initPosition = initPosition || e.touches[0].screenY;
+    //console.log(initPosition);
+
+  }
   onWheel(e){
     if( !this.scrollAllow){
       e.preventDefault();
@@ -74,7 +97,7 @@ export default class MultiGroup extends React.Component {
     const {nPage}= this.state;
     const transition= `all ${this.animTime}s`;
     return (
-        <div onWheel={this.onWheel} className="scroller">
+        <div onWheel={this.onWheel} onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd} className="scroller">
             <div className="left" style={{top:`-${this.state.height*(nPage-1)}px`,transition}}>
                 {this.renderList(contLeft)}
             </div>
