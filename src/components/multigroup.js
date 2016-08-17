@@ -32,7 +32,7 @@ export default class MultiGroup extends React.Component {
   }
   _setSidePage(child,key){
       if (child.type == "multiScroll"){
-            let bgColor = child.props.bgColor|| "red";
+            const bgColor = child.props.bgColor|| "red";
             React.Children.map(child.props.children, (section) => {
                 switch(section.type){
                   case "leftSide" :
@@ -55,13 +55,33 @@ export default class MultiGroup extends React.Component {
 
   }
   onTouchEnd(d){
-    console.log("First position: "+this.initPosition+". Last position: "+this.lastPosition);
+    //console.log("First position: "+this.initPosition+". Last position: "+this.lastPosition);
+    if( !this.scrollAllow){
+      d.preventDefault();
+    }
+    else{
+
+      const direction = this.initPosition - this.lastPosition;
+      let step;
+      if (direction < 0 && direction < -150){
+        // Scroll down
+        step = this.state.nPage-1
+      }
+      if (direction > 0 && direction > 150) {
+        // Scroll up
+          step = this.state.nPage+1
+      }
+      if (this.scrollAllow && step >= 1 && step <= this.state.count){
+          this.scrollAllow = false;
+
+          setTimeout(()=>{this.scrollAllow=true},(this.animTime*1000));
+          this.setState({nPage: step})
+      }
+    }
   }
 
   onTouch(e){
-    let initPosition = initPosition || e.touches[0].screenY;
-    //console.log(initPosition);
-
+    const initPosition = initPosition || e.touches[0].screenY;
   }
   onWheel(e){
     if( !this.scrollAllow){
