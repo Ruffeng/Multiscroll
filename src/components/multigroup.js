@@ -32,7 +32,7 @@ export default class MultiGroup extends React.Component {
   }
   _setSidePage(child,key){
       if (child.type == "multiScroll"){
-            const bgColor = child.props.bgColor|| "red";
+            const bgColor = child.props.bgColor;
             React.Children.map(child.props.children, (section) => {
                 switch(section.type){
                   case "leftSide" :
