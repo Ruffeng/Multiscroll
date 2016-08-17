@@ -64,12 +64,12 @@ export default class MultiGroup extends React.Component {
       const direction = this.initPosition - this.lastPosition;
       let step;
       if (direction < 0 && direction < -150){
-        // Scroll down
-        step = this.state.nPage-1
+        // Scroll down . Change the symbol to negative if you want to invert the order
+        step = this.state.nPage+1
       }
       if (direction > 0 && direction > 150) {
-        // Scroll up
-          step = this.state.nPage+1
+        // Scroll up . Change the symbol to positive if you want to invert the order
+          step = this.state.nPage-1
       }
       if (this.scrollAllow && step >= 1 && step <= this.state.count){
           this.scrollAllow = false;
