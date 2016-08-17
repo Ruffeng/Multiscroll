@@ -101,7 +101,7 @@ export default class MultiGroup extends React.Component {
             <div className="left" style={{top:`-${this.state.height*(nPage-1)}px`,transition}}>
                 {this.renderList(contLeft)}
             </div>
-            <div className="menu" />
+
             <div className="right" style={{bottom:`-${this.state.height*(nPage-1)}px`,transition}}>
                 {this.renderList(contRight)}
             </div>

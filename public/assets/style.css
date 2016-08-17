@@ -43,19 +43,7 @@
   transition: all .7s;
 
 }
-/* V SHAPE */
-.menu{
-  z-index: 1;
-  background-color: #DD4124;
-  height: 100%;
-  width: 20%;
-  position: absolute;
-  left: 40%;
-  -webkit-clip-path: polygon(50% 100%, 0 0, 100% 0);
-  clip-path: polygon(50% 100%, 0 0, 100% 0);
 
-
-}
 
 
 
@@ -115,13 +103,13 @@
 /* CSS TO CENTER THE EXAMPLES */
 .left .page {
   text-align: right;
-  padding-right: 20%;
+  padding-right: 0%;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 .right .page {
-  padding-left: 20%;
+  padding-left: 0%;
   display: flex;
   justify-content: center;
   flex-direction: column;

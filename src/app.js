@@ -23,6 +23,14 @@ jQuery(function() {
               DIV4
             </rightSide>
           </multiScroll>
+          <multiScroll >
+            <leftSide>
+              DIV5
+            </leftSide>
+            <rightSide>
+              DIV6
+            </rightSide>
+          </multiScroll>
        </MultiGroup>
 
     ,
