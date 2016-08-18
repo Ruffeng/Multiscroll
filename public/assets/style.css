@@ -27,7 +27,7 @@
   top: 0;
   position: absolute;
   overflow: hidden;
-  width: 50%;
+  width: 50.2%;
   transition: all .7s;
 
 
@@ -128,6 +128,9 @@
 .right .page-1{
   background-image: linear-gradient(90deg, #6D9864, #005470);
 }
+.left .page-1 .title{
+  padding-right: 0.3%;
+}
 @media only screen and (min-width : 320px) {
   .left .page-1 .title,
   .right .page-1 .title{
@@ -188,6 +191,19 @@
     font-size: 3.740em;
   }
 }
+
+/*SLIDE 2*/
+
+ .left .page-2{
+  background-image: url('/assets/images/jelly-left.png');
+  background-size: cover;
+  background-position: right bottom;
+ }
+.right .page-2{
+  background-image: url('/assets/images/jelly-right.png');
+  background-position: left bottom;
+  background-size: cover;
+ }
 
 
 
