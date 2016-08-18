@@ -10,20 +10,20 @@ jQuery(function() {
           <multiScroll >
             <leftSide>
 
-              <div>
+              <div className="title">
                 multiScro
               </div>
-              <div>
+              <div className="content">
                 Responsive divided
               </div>
 
             </leftSide>
             <rightSide>
 
-              <div>
+              <div className="title">
                 ll.ReactJs
               </div>
-              <div>
+              <div className="content">
                 multi-scroll pages!
               </div>
 

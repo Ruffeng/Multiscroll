@@ -120,10 +120,25 @@
   font-family: 'Catamaran', sans-serif;
 
 }
-.left .page-1{
-  background-image: linear-gradient(90deg, #f7ed56, #005470);
-}
-.right .page-1{
-  background-image: linear-gradient(90deg, #f7ed56, #005470);
-}
 /* SLIDE 1 */
+.left .page-1{
+  background-image: linear-gradient(90deg, #f7ed56, #6D9864);
+}
+
+.left .page-1 .title{
+  font-size: 3.91vw;
+  font-weight: bold;
+  line-height: 1.29;
+}
+
+.right .page-1{
+  background-image: linear-gradient(90deg, #6D9864, #005470);
+}
+
+.right .page-1 .title{
+  font-size: 3.91vw;
+  font-weight: bold;
+  line-height: 1.29;
+}
+
+
