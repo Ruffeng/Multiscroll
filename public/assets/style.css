@@ -1,13 +1,12 @@
 
 /* GENERAL */
-@import url(https://fonts.googleapis.com/css?family=Rubik:700);
 
-* {
+
+/* * {
   font-family: 'Rubik', sans-serif;
   font-size: 44px;
-  background-color: red;
   text-shadow: 0.3px 0.3px #9896A4;
-}
+}*/
 ::selection {
   background: #FAE03C; /* WebKit/Blink Browsers */
 }
@@ -117,10 +116,14 @@
 
 
 /* CSS FOR THE EXAMPLES */
+.page{
+  font-family: 'Catamaran', sans-serif;
+
+}
 .left .page-1{
   background-image: linear-gradient(90deg, #f7ed56, #005470);
 }
 .right .page-1{
-  background-image: linear-gradient(-90deg, #f7ed56, #005470);
+  background-image: linear-gradient(90deg, #f7ed56, #005470);
 }
 /* SLIDE 1 */

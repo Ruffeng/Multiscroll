@@ -9,10 +9,24 @@ jQuery(function() {
 	     <MultiGroup >
           <multiScroll >
             <leftSide>
-              DIV1
+
+              <div>
+                multiScro
+              </div>
+              <div>
+                Responsive divided
+              </div>
+
             </leftSide>
             <rightSide>
-              DIV2
+
+              <div>
+                ll.ReactJs
+              </div>
+              <div>
+                multi-scroll pages!
+              </div>
+
             </rightSide>
           </multiScroll>
           <multiScroll >
