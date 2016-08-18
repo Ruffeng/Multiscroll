@@ -32,12 +32,21 @@ jQuery(function() {
           </multiScroll>
 
           <multiScroll >
-
             <leftSide>
-
+              <div className="title">
+                div
+              </div>
+              <div className="content">
+                backgroun
+              </div>
             </leftSide>
             <rightSide>
-
+              <div className="title">
+                vide
+              </div>
+              <div className="content">
+                d images
+              </div>
             </rightSide>
           </multiScroll>
 

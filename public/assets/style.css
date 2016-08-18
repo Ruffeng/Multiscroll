@@ -3,9 +3,8 @@
 
 
  * {
-  /*font-family: 'Rubik', sans-serif;*/
+  font-family: 'Catamaran', sans-serif;
   font-size: 16px;
-  /*text-shadow: 0.3px 0.3px #9896A4;*/
 }
 ::selection {
   background: #FAE03C; /* WebKit/Blink Browsers */
@@ -27,7 +26,8 @@
   top: 0;
   position: absolute;
   overflow: hidden;
-  width: 50.2%;
+  width: 50%;
+  /*ALternative at 50.2%*/
   transition: all .7s;
 
 
@@ -116,10 +116,7 @@
 
 
 /* CSS FOR THE EXAMPLES */
-.page{
-  font-family: 'Catamaran', sans-serif;
 
-}
 /* SLIDE 1 */
 .left .page-1{
   background-image: linear-gradient(90deg, #f7ed56, #6D9864);
@@ -129,7 +126,7 @@
   background-image: linear-gradient(90deg, #6D9864, #005470);
 }
 .left .page-1 .title{
-  padding-right: 0.3%;
+  /*padding-right: 0.3%;*/
 }
 @media only screen and (min-width : 320px) {
   .left .page-1 .title,
@@ -198,14 +195,73 @@
   background-image: url('/assets/images/jelly-left.png');
   background-size: cover;
   background-position: right bottom;
- }
+}
 .right .page-2{
   background-image: url('/assets/images/jelly-right.png');
-  background-position: left bottom;
   background-size: cover;
+  background-position: left bottom;
+
  }
+@media only screen and (min-width : 320px) {
 
+  .left .page-2{
+   background-size: 350% 150%;
+    background-position: 100% 70%;
+  }
+  .left .page-2 .title{
+    font-size: 3.438em;
+    font-weight: 800;
+    padding-top: 4.5em;
+    margin-right: -15px;
+    line-height: 2.16em;
+  }
+  .left .page-2 .content,
+  .right .page-2 .content{
+    font-size: 0.875em;
+    font-weight: 100;
+  }
+  .right .page-2{
+    background-size: 350% 150%;
+    background-position: 0% 70%;
+   }
+   .right .page-2 .title{
+    font-size: 3.438em;
+    font-weight: 800;
+    padding-top: 5em;
+    margin-left: -15px;
+  }
+}
+@media only screen and (min-width : 320px) and (orientation: landscape) {
 
+  .left .page-2{
+   background-size: 300% 200%;
+  }
+  .left .page-2 .title{
+    padding-top: 2.5em;
+  }
+  .right .page-2{
+    background-size: 300% 200%;
+   }
+  .right .page-2 .title{
+    padding-top: 3em;
+  }
+}
+@media only screen and (min-width : 768px) {
+  .left .page-2{
+   background-size: 200% 120%;
+   background-position: 100% 90%;
+  }
+  .left .page-2 .title{
+    padding-top: 2.5em;
+  }
+  .right .page-2{
+   background-size: 200% 120%;
+   background-position: 0% 90%;
+   }
+  .right .page-2 .title{
+    padding-top: 3em;
+  }
+}
 
 /* Custom, iPhone Retina */
     @media only screen and (min-width : 320px) {
