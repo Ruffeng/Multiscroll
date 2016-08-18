@@ -2,11 +2,11 @@
 /* GENERAL */
 
 
-/* * {
-  font-family: 'Rubik', sans-serif;
-  font-size: 44px;
-  text-shadow: 0.3px 0.3px #9896A4;
-}*/
+ * {
+  /*font-family: 'Rubik', sans-serif;*/
+  font-size: 16px;
+  /*text-shadow: 0.3px 0.3px #9896A4;*/
+}
 ::selection {
   background: #FAE03C; /* WebKit/Blink Browsers */
 }
@@ -84,7 +84,7 @@
   outline: none;
   border-radius: 50%;
   background-color: #fff;
-  background-color: rgba(255,255,255,0.3);
+  background-color: rgba(157,164,200,0.5);
   cursor: pointer; /* make the text accessible to screen readers */
   position: absolute;
   -webkit-transition: background-color 0.7s ease;
@@ -94,7 +94,7 @@
 .dotstyle li a:hover,
 .dotstyle li a:focus,
 .dotstyle li.current a {
-  background-color: #fff;
+  background-color: rgba(157,164,200,1);
 }
 
 
@@ -102,10 +102,10 @@
 /* CSS TO CENTER THE EXAMPLES */
 .left .page {
   text-align: right;
-  padding-right: 0%;
   display: flex;
   justify-content: center;
   flex-direction: column;
+
 }
 .right .page {
   padding-left: 0%;
@@ -125,20 +125,92 @@
   background-image: linear-gradient(90deg, #f7ed56, #6D9864);
 }
 
-.left .page-1 .title{
-  font-size: 3.91vw;
-  font-weight: bold;
-  line-height: 1.29;
-}
-
 .right .page-1{
   background-image: linear-gradient(90deg, #6D9864, #005470);
 }
+@media only screen and (min-width : 320px) {
+  .left .page-1 .title,
+  .right .page-1 .title{
+    font-size: 0.9em;
+    font-weight: 600;
+    line-height: 2em;
 
-.right .page-1 .title{
-  font-size: 3.91vw;
-  font-weight: bold;
-  line-height: 1.29;
+
+  }
+   .left .page-1 .content,
+  .right .page-1 .content{
+    font-size: 0.9em;
+    font-weight: 100;
+    line-height: 2em;
+  }
+  .dotstyle li {
+    width: 10px;
+    height: 10px;
+    margin: 10% 20px;
+  }
 }
+
+@media only screen and (min-width : 768px) {
+  .left .page-1 .title,
+  .right .page-1 .title{
+    font-size: 2.5em;
+    font-weight: 700;
+  }
+   .left .page-1 .content,
+  .right .page-1 .content{
+    font-size: 2.2em;
+    font-weight: 100;
+  }
+  .dotstyle li {
+    width: 15px;
+    height: 15px;
+    margin: 20% 40px;
+  }
+}
+
+@media only screen and (min-width : 992px) {
+  .left .page-1 .title,
+  .right .page-1 .title{
+    font-size: 3.125em;
+  }
+   .left .page-1 .content,
+  .right .page-1 .content{
+    font-size: 3.125em;
+  }
+}
+@media only screen and (min-width : 1200px) {
+  .left .page-1 .title,
+  .right .page-1 .title{
+    font-size: 3.750em;
+  }
+   .left .page-1 .content,
+  .right .page-1 .content{
+    font-size: 3.740em;
+  }
+}
+
+
+
+/* Custom, iPhone Retina */
+    @media only screen and (min-width : 320px) {
+
+    }
+
+
+    /* Small Devices, Tablets */
+    @media only screen and (min-width : 768px) {
+
+    }
+
+    /* Medium Devices, Desktops */
+    @media only screen and (min-width : 992px) {
+
+    }
+
+    /* Large Devices, Wide Screens */
+    @media only screen and (min-width : 1200px) {
+
+    }
+
 
 
