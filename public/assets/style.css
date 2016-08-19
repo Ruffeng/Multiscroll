@@ -341,7 +341,7 @@
   background-image: url('/assets/images/build-right.png');
   background-color: #f7f7f7;
 }
-.page-3 .left .page {
+ .left .page-3 {
   text-align: right;
   display: flex;
   justify-content: flex-start;
@@ -408,7 +408,7 @@
   }
 }
 @media only screen and (min-width : 992px) {
-  .page-3 .left .page{
+  .left .page-3{
     text-align: left;
     padding-left: 10%;
   }
