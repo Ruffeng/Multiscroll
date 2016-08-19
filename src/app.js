@@ -52,10 +52,15 @@ jQuery(function() {
 
           <multiScroll >
             <leftSide>
-              DIV5
+               <div className="title">
+                ...and create as many pages
+              </div>
+              <div className="content">
+                as you want!
+              </div>
             </leftSide>
             <rightSide>
-              DIV6
+
             </rightSide>
           </multiScroll>
        </MultiGroup>

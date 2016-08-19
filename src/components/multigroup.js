@@ -2,7 +2,7 @@ import React from 'react';
 export default class MultiGroup extends React.Component {
   constructor(props){
     super(props);
-    this.state={nPage: 1, count: React.Children.count(this.props.children), height: document.documentElement.clientHeight };
+    this.state={scroller: "scroller", nPage: 1, count: React.Children.count(this.props.children), height: document.documentElement.clientHeight };
     this.onWheel= this.onWheel.bind(this);
     this.onTouch= this.onTouch.bind(this);
     this.selectPage=this.selectPage.bind(this);
@@ -75,7 +75,7 @@ export default class MultiGroup extends React.Component {
           this.scrollAllow = false;
 
           setTimeout(()=>{this.scrollAllow=true},(this.animTime*1000));
-          this.setState({nPage: step})
+          this.setState({nPage: step, scroller: `scroller page-${step}`})
       }
     }
   }
@@ -93,12 +93,13 @@ export default class MultiGroup extends React.Component {
         this.scrollAllow = false;
 
         setTimeout(()=>{this.scrollAllow=true},(this.animTime*1000));
-        this.setState({nPage: step})
+        this.setState({nPage: step, scroller: `scroller page-${step}`})
       }
     }
   }
   selectPage(nPage){
       this.setState({nPage});
+      this.setState({scroller: `scroller page-${nPage}`});
   }
   renderList(list){
           return(
@@ -117,7 +118,7 @@ export default class MultiGroup extends React.Component {
     const {nPage}= this.state;
     const transition= `all ${this.animTime}s`;
     return (
-        <div onWheel={this.onWheel} onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd} className="scroller">
+        <div onWheel={this.onWheel} onTouchStart={this.onTouchStart} onTouchMove={this.onTouchMove} onTouchEnd={this.onTouchEnd} className={this.state.scroller}>
             <div className="left" style={{top:`-${this.state.height*(nPage-1)}px`,transition}}>
                 {this.renderList(contLeft)}
             </div>
