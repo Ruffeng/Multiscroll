@@ -5,6 +5,7 @@ export default class MultiGroup extends React.Component {
     super(props);
     this.state={scroller: "scroller", nPage: 1, count: React.Children.count(this.props.children), height: document.documentElement.clientHeight };
     this.onWheel= this.onWheel.bind(this);
+    this.onTouch= this.onTouch.bind(this);
     this.selectPage=this.selectPage.bind(this);
     this._handleResize = this._handleResize.bind(this);
     this.onTouchStart = this.onTouchStart.bind(this);
@@ -87,6 +88,12 @@ export default class MultiGroup extends React.Component {
       }
       this._changeScrallow(step);
     }
+  }
+  // Function to prevent weird behaviors from trackpads
+  onTouch(e){
+    let initPosition = initPosition || e.touches[0].screenY;
+    //console.log(initPosition);
+
   }
   //Function to deal when you wheel down or up
   onWheel(e){
