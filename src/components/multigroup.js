@@ -1,39 +1,45 @@
 import React from 'react';
 export default class MultiGroup extends React.Component {
+  // Default options
   constructor(props){
     super(props);
     this.state={scroller: "scroller", nPage: 1, count: React.Children.count(this.props.children), height: document.documentElement.clientHeight };
     this.onWheel= this.onWheel.bind(this);
-    this.onTouch= this.onTouch.bind(this);
     this.selectPage=this.selectPage.bind(this);
     this._handleResize = this._handleResize.bind(this);
     this.onTouchStart = this.onTouchStart.bind(this);
     this.onTouchEnd = this.onTouchEnd.bind(this);
     this.onTouchMove = this.onTouchMove.bind(this);
     this.scrollAllow=true;
-    this.animTime=3.0;
+    this.animTime=this.props.animTime || 3.0;
     this.webLeft=[];
     this.webRight=[];
     this.initPosition=0;
     this.lastPosition=0;
     this._defineContent();
   }
+
+  // A Listener to check if the window has changed its height
   componentDidMount() {
        window.addEventListener("resize", this._handleResize);
   }
+  // Internal function to change the size of the height on the screen dinamically
   _handleResize(){
       this.setState({height: document.documentElement.clientHeight})
   }
+  // Function to iterate the sons of <Multiscroll> component
   _defineContent(){
        React.Children.map(this.props.children, (child,key) => {
+          //Once that we iterate, we have <leftSide> and <rightSide>, so we call another function to iterate it, too.
           this._setSidePage(child,key);
        })
   }
+  // Function to know which side is sending, left or right. We check with switch...
   _setSidePage(child,key){
       if (child.type == "multiScroll"){
-            const bgColor = child.props.bgColor;
+            const bgColor = child.props.bgColor; //defining a background color
             React.Children.map(child.props.children, (section) => {
-                switch(section.type){
+                switch(section.type){ //Pushing the content on one of the arrays, left or right
                   case "leftSide" :
                     this.webLeft.push({page: key, content: section.props.children, bgColor });
                     break;
@@ -44,17 +50,26 @@ export default class MultiGroup extends React.Component {
             })
       }
   }
+  // Forbid to do any scrolling meanwhile the slide transaction is running
+  _changeScrallow(step){
+    if (this.scrollAllow && step >= 1 && step <= this.state.count){
+          this.scrollAllow = false;
+          setTimeout(()=>{this.scrollAllow=true},(this.animTime*1000));
+          this.selectPage(step);
+    }
+  }
 
+  // Function to move between slides touching on mobile devices. We take the first position of the touch on screen
   onTouchStart(e){
     this.initPosition = e.touches[0].screenY
   }
-
+  // Store the last position on the touch.
   onTouchMove(e){
     this.lastPosition = e.touches[0].screenY;
 
   }
+  //Calculate initposition vs last. In case that is negative. the finger has scrolled down from the screen. In cas of positive the finger has scrolled up from the screen
   onTouchEnd(d){
-    //console.log("First position: "+this.initPosition+". Last position: "+this.lastPosition);
     if( !this.scrollAllow){
       d.preventDefault();
     }
@@ -70,36 +85,24 @@ export default class MultiGroup extends React.Component {
         // Scroll up . Change the symbol to positive if you want to invert the order
           step = this.state.nPage-1
       }
-      if (this.scrollAllow && step >= 1 && step <= this.state.count){
-          this.scrollAllow = false;
-
-          setTimeout(()=>{this.scrollAllow=true},(this.animTime*1000));
-          this.setState({nPage: step, scroller: `scroller page-${step}`})
-      }
+      this._changeScrallow(step);
     }
   }
-
-  onTouch(e){
-    const initPosition = initPosition || e.touches[0].screenY;
-  }
+  //Function to deal when you wheel down or up
   onWheel(e){
     if( !this.scrollAllow){
       e.preventDefault();
     }
     else{
-      const step = e.deltaY > 0 ? this.state.nPage+1 : this.state.nPage-1;
-      if (this.scrollAllow && step >= 1 && step <= this.state.count){
-        this.scrollAllow = false;
-
-        setTimeout(()=>{this.scrollAllow=true},(this.animTime*1000));
-        this.setState({nPage: step, scroller: `scroller page-${step}`})
-      }
+      const step = e.deltaY > 0 ? this.state.nPage+1 : this.state.nPage-1; //Calculate if it has scrolled down or up
+      this._changeScrallow(step);
     }
   }
-  selectPage(nPage){
+  selectPage(nPage){    //Set the current page on the state
       this.setState({nPage});
       this.setState({scroller: `scroller page-${nPage}`});
   }
+  //Render the contents of each part specifying page number in a class
   renderList(list){
           return(
             list.map((content)=>{
@@ -138,6 +141,8 @@ export default class MultiGroup extends React.Component {
     );
   }
 }
+
+// Class to give the calculate the menu buttons and put the bullets
 class Menu extends React.Component {
    constructor(props){
       super(props);
