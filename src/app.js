@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import jQuery from 'jquery';
 import MultiGroup from './components/multigroup';
+import Pages from './components/pagesexample';
 
 
 jQuery(function() {
@@ -10,54 +11,26 @@ jQuery(function() {
 
           <multiScroll >
             <leftSide>
-
-              <div className="title">
-                multiScro
-              </div>
-              <div className="content">
-                Responsive divided
-              </div>
-
+              <Pages pg="1" side="left" />
             </leftSide>
             <rightSide>
-
-              <div className="title">
-                ll.ReactJs
-              </div>
-              <div className="content">
-                &nbsp;multi-scroll pages!
-              </div>
-
+              <Pages pg="1" side="right" />
             </rightSide>
           </multiScroll>
 
           <multiScroll >
             <leftSide>
-              <div className="title">
-                div
-              </div>
-              <div className="content">
-                backgroun
-              </div>
+              <Pages pg="2" side="left" />
+
             </leftSide>
             <rightSide>
-              <div className="title">
-                vide
-              </div>
-              <div className="content">
-                d images
-              </div>
+              <Pages pg="2" side="right" />
             </rightSide>
           </multiScroll>
 
           <multiScroll >
             <leftSide>
-               <div className="title">
-                ...and create as many pages
-              </div>
-              <div className="content">
-                as you want!
-              </div>
+               <Pages pg="3" side="left" />
             </leftSide>
             <rightSide>
 

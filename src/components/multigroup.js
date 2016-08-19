@@ -17,7 +17,6 @@ export default class MultiGroup extends React.Component {
     this.initPosition=0;
     this.lastPosition=0;
     this._defineContent();
-    console.log(this.backgrounds);
   }
   componentDidMount() {
        window.addEventListener("resize", this._handleResize);
