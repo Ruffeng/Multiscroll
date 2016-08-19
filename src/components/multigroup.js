@@ -92,7 +92,7 @@ export default class MultiGroup extends React.Component {
   // Function to prevent weird behaviors from trackpads
   onTouch(e){
     let initPosition = initPosition || e.touches[0].screenY;
-    //console.log(initPosition);
+    console.log(initPosition);
 
   }
   //Function to deal when you wheel down or up
