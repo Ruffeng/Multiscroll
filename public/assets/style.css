@@ -221,7 +221,7 @@
   .right .page-2 .content{
     font-size: 0.875em;
     font-weight: 100;
-    padding-right: 0.9%;
+    padding-right: 0.4%;
   }
   .right .page-2{
     background-size: 350% 150%;
@@ -369,8 +369,9 @@
     color:#4a4a4a;
     font-size: 0.75em;
     font-weight: 100;
-    padding-top: 10%;
+    padding-top: 15%;
     padding-right: 1px;
+    margin-bottom: -5%;
 
   }
   .left .page-3 .content{
@@ -395,19 +396,34 @@
   .left .page-3 .title,
   .left .page-3 .content{
     padding-right: 3px;
-  {
+  }
 
 }
+@media only screen and (min-width : 768px) {
+  .left .page-3 .title{
+    font-size: 1.875em;
+  }
+  .left .page-3 .content{
+    font-size: 3.5em;
+  }
+}
+@media only screen and (min-width : 992px) {
+  .page-3 .left .page{
+    text-align: left;
+    padding-left: 10%;
+  }
+  .left .page-3,
+  .right .page-3{
+     background-size: 50% 100%;
+  }
+  .left .page-3 .title{
+    font-size: 2.31em;
+  }
+  .left .page-3 .content{
+    font-size: 4.37em;
+  }
+}
 
-    /* Small Devices, Tablets */
-    @media only screen and (min-width : 768px) {
-
-    }
-
-    /* Medium Devices, Desktops */
-    @media only screen and (min-width : 992px) {
-
-    }
 
     /* Large Devices, Wide Screens */
     @media only screen and (min-width : 1200px) {
