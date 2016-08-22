@@ -207,8 +207,8 @@
    width: 50.5%;   /*Fixing the error or 50/50 page*/
   }
   .left .page-2{
-   background-size: 350% 150%;
-    background-position: 100% 70%;
+   background-size: 275% 125%;
+    background-position: 100% 100%;
   }
   .left .page-2 .title{
     font-size: 3.438em;
@@ -224,8 +224,8 @@
     padding-right: 0.4%;
   }
   .right .page-2{
-    background-size: 350% 150%;
-    background-position: 0% 70%;
+    background-size: 275% 125%;
+    background-position: 0% 100%;
    }
    .right .page-2 .title{
     font-size: 3.438em;
@@ -236,15 +236,19 @@
 }
 @media only screen and (min-width : 320px) and (orientation: landscape) {
 
-  .left .page-2{
-   background-size: 300% 200%;
+  .left .page-2,
+  .right .page-2{
+   background-size: 130% 175%;
+   background-position: 100% 85%;
+  }
+
+  .right .page-2{
+   background-size: 130% 175%;
+   background-position: 0% 85%;
   }
   .left .page-2 .title{
     padding-top: 2.5em;
   }
-  .right .page-2{
-    background-size: 300% 200%;
-   }
   .right .page-2 .title{
     padding-top: 3em;
   }
@@ -254,8 +258,8 @@
    width: 50.27%;   /*Fixing the error or 50/50 page*/
   }
   .left .page-2{
-   background-size: 200% 120%;
-   background-position: 100% 90%;
+   background-size: 200% 125%;
+   background-position: 100% 100%;
   }
   .left .page-2 .title{
     padding-top: 4.5em;
@@ -267,8 +271,8 @@
     font-size: 1.875em;
   }
   .right .page-2{
-   background-size: 200% 120%;
-   background-position: 0% 90%;
+   background-size: 200% 125%;
+   background-position: 0% 100%;
    }
   .right .page-2 .title{
     padding-top: 5em;
@@ -281,15 +285,13 @@
 }
 
 @media only screen and (min-width : 768px) and (orientation: landscape){
-  .left .page-2{
-    background-size: 130% 120%;
+  .left .page-2,
+  .right .page-2{
+    background-size: 140% 140%;
 
   }
   .left .page-2 .title{
     line-height: 2.12em;
-  }
-  .right .page-2{
-    background-size: 130% 120%;
   }
 
 }
