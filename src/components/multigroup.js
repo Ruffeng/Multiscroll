@@ -60,6 +60,18 @@ export default class MultiGroup extends React.Component {
     }
   }
 
+  // // Function to fix the weird behavior in case that you use trackpad instead of mouse
+  // _maxPosition(e){
+  //   const firstPosition = firstPosition || e;
+  //   console.log("Value of first: "+firstPosition);
+
+  //   if (firstPosition != e){
+  //     console.log("Value is diferent");
+  //   }
+  //   //firstPosition > e ?
+  //   return firstPosition;
+  // }
+
   // Function to move between slides touching on mobile devices. We take the first position of the touch on screen
   onTouchStart(e){
     this.initPosition = e.touches[0].screenY
@@ -75,7 +87,6 @@ export default class MultiGroup extends React.Component {
       d.preventDefault();
     }
     else{
-
       const direction = this.initPosition - this.lastPosition;
       let step;
       if (direction < 0 && direction < -150){
@@ -97,12 +108,17 @@ export default class MultiGroup extends React.Component {
   }
   //Function to deal when you wheel down or up
   onWheel(e){
+   // const position = this._maxPosition(e.deltaY);
+   // console.log("The value of position is"+position);
     if( !this.scrollAllow){
       e.preventDefault();
     }
     else{
-      const step = e.deltaY > 0 ? this.state.nPage+1 : this.state.nPage-1; //Calculate if it has scrolled down or up
-      this._changeScrallow(step);
+      if (e.deltaY != 0){ // if created to avoid weird behaviors on trackpads
+        e.preventDefault();
+        const step = e.deltaY > 0 ? this.state.nPage+1 : this.state.nPage-1; //Calculate if it has scrolled down or up
+        this._changeScrallow(step);
+      }
     }
   }
   selectPage(nPage){    //Set the current page on the state
