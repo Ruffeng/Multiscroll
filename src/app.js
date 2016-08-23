@@ -18,7 +18,7 @@ import Pages from './components/pagesexample';
 
 jQuery(function() {
   ReactDOM.render(
-	     <MultiGroup animTime ={3.0}>
+	     <MultiGroup animTime ={1.5}>
 
           <multiScroll>
             <leftSide>
