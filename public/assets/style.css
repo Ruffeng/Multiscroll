@@ -365,7 +365,7 @@
     font-size: 0.75em;
     font-weight: 100;
     padding-top: 15%;
-    padding-right: 1px;
+    padding-right: 10px;
     margin-bottom: -5%;
 
   }
@@ -373,7 +373,7 @@
     color:#4a4a4a;
     font-size: 1.41em;
     font-weight: 900;
-    padding-right: 1px;
+    padding-right: 10px;
 
   }
   .right .page-3{
@@ -386,22 +386,25 @@
 @media only screen and (min-width : 320px) and (orientation: landscape) {
   .left .page-3,
   .right .page-3{
-     background-size: 40% 65%;
+     background-size: 35% 65%;
   }
   .left .page-3 .title,
   .left .page-3 .content{
-    padding-right: 3px;
+    padding-right: 10px;
   }
 
 }
 @media only screen and (min-width : 768px) {
   .left .page-3 .title{
     font-size: 1.875em;
+    padding-right: 20px;
   }
   .left .page-3 .content{
     font-size: 3.5em;
+    padding-right: 20px;
   }
 }
+
 @media only screen and (min-width : 992px) {
   .left .page-3{
     text-align: left;
@@ -417,6 +420,8 @@
   .left .page-3 .content{
     font-size: 4.37em;
   }
+
+
 }
 
 
