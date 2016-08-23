@@ -40,7 +40,7 @@ The on your app you must create this structure:
               // Page2: Content Left here
         </leftSide>
         <rightSide>
-              // Page2: Content Left here
+              // Page2: Content Right here
         </rightSide>
     </multiScroll>
 </MultiGroup>
@@ -67,3 +67,5 @@ I took a boilerplate  browserify + gulp + react + additional items that has been
 The jellyfish picture has been taken by [@danist07](https://unsplash.com/@danist07).
 
 The building picture has been taken by [@aleccutter](https://unsplash.com/@aleccutter)
+
+Follow me on [github](https://github.com/Ruffeng)
