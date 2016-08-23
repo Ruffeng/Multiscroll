@@ -1,17 +1,17 @@
 {
-  "name": "multiscroll-plugin",
+  "name": "multiscroll-reactjs",
   "version": "1.0.0",
-  "description": "Starter code for using Babel with Gulp",
+  "description": "Multiscroll + split screen for reactjs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "gulp watch"
   },
-  "author": "Ruben Suet <rubensuet@gmail.com> ",
+  "author": "Ruben Suet <ruben.suet@gmail.com>",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:Ruffeng/Multiscroll-plugin.git"
+    "url": "git+ssh://git@github.com/Ruffeng/Multiscroll-plugin.git"
   },
   "keywords": [
     "babel",
@@ -20,9 +20,6 @@
     "multiscroll",
     "splitscreen"
   ],
-  "bugs": {
-    "url": "git@github.com:Ruffeng/Multiscroll-plugin.git"
-  },
   "homepage": "https://github.com/ruffeng/Multiscroll-plugin/#readme",
   "devDependencies": {
     "babel-core": "^6.7.6",
@@ -48,9 +45,10 @@
     "watchify": "^3.7.0"
   },
   "dependencies": {
-
     "react": "^15.0.1",
     "react-dom": "^15.0.1"
-
+  },
+  "bugs": {
+    "url": "https://github.com/Ruffeng/Multiscroll-plugin/issues"
   }
 }
