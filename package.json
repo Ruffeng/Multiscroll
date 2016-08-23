@@ -1,6 +1,6 @@
 {
   "name": "multiscroll-reactjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Multiscroll + split screen for reactjs",
   "main": "index.js",
   "scripts": {
