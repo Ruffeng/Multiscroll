@@ -1,6 +1,6 @@
 # Multiscroll Plugin
 This plugin adds the funcion long scrolling + split screen in ReactJs.
-To see a live example you can go at:
+To see a live example you can go [here](https://reactplugin.herokuapp.com/)
 
 
 # Installing
